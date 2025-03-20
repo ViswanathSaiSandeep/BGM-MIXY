@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGM Mixy - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">BGM Mixy</div>
+        <div class="nav-links">
+            <a href="/">Discover</a>
+            <a href="/admin" class="active">Admin</a>
+        </div>
+    </nav>
+
+    <main class="admin-main">
+        <div class="admin-container">
+            <div class="admin-card upload-section">
+                <div class="card-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload New Track</h2>
+                </div>
+                <div class="card-body">
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="form-preview">
+                            <div class="preview-container">
+                                <div class="cover-preview" id="coverPreview">
+                                    <i class="fas fa-image"></i>
+                                    <span>Cover Preview</span>
+                                </div>
+                                <div class="file-info" id="musicFileInfo">
+                                    <i class="fas fa-music"></i>
+                                    <span>No file selected</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-fields">
+                            <div class="form-group">
+                                <label for="title">
+                                    <i class="fas fa-heading"></i> Track Title
+                                </label>
+                                <input type="text" id="title" name="title" placeholder="Enter track title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="artist">
+                                    <i class="fas fa-user"></i> Artist
+                                </label>
+                                <input type="text" id="artist" name="artist" placeholder="Enter artist name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="album">
+                                    <i class="fas fa-compact-disc"></i> Album
+                                </label>
+                                <input type="text" id="album" name="album" placeholder="Enter album name" required>
+                            </div>
+                            
+                            <div class="form-group file-input-group">
+                                <label for="music">
+                                    <i class="fas fa-music"></i> Music File
+                                </label>
+                                <div class="file-input-container">
+                                    <input type="file" id="music" name="music" accept="audio/*" required>
+                                    <label for="music" class="file-label">
+                                        <i class="fas fa-upload"></i> Choose Music File
+                                    </label>
+                                    <span class="file-name" id="musicFileName">No file chosen</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group file-input-group">
+                                <label for="cover">
+                                    <i class="fas fa-image"></i> Cover Image
+                                </label>
+                                <div class="file-input-container">
+                                    <input type="file" id="cover" name="cover" accept="image/*" required>
+                                    <label for="cover" class="file-label">
+                                        <i class="fas fa-upload"></i> Choose Cover Image
+                                    </label>
+                                    <span class="file-name" id="coverFileName">No file chosen</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" id="uploadBtn" class="btn primary-btn">
+                                    <i class="fas fa-cloud-upload-alt"></i> Upload Track
+                                </button>
+                                <button type="reset" class="btn secondary-btn">
+                                    <i class="fas fa-redo"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="admin-card songs-section">
+                <div class="card-header">
+                    <h2><i class="fas fa-music"></i> Manage Tracks</h2>
+                </div>
+                <div class="card-body">
+                    <div class="songs-table-container">
+                        <table class="songs-table">
+                            <thead>
+                                <tr>
+                                    <th>Cover</th>
+                                    <th>Title</th>
+                                    <th>Artist</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="songsTableBody">
+                                <!-- Songs will be loaded here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>
